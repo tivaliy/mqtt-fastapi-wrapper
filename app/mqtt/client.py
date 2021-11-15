@@ -5,6 +5,7 @@ from fastapi_mqtt.fastmqtt import FastMQTT
 from .config import get_mqtt_config
 
 
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 fast_mqtt = FastMQTT(

@@ -1,6 +1,7 @@
 import uuid
-from datetime import datetime
+from typing import List
 
+from app import schemas
 from fastapi import APIRouter, Body, HTTPException
 
 from app.mqtt.client import fast_mqtt
@@ -9,19 +10,18 @@ from app.mqtt.client import fast_mqtt
 router = APIRouter()
 
 # fake topic list
-topic_list = ['foo', 'bar']
+FAKE_TOPICS_LIST = ("/foo", "/bar")
 
 
-@router.get("/")
+@router.get("/", response_model=List[schemas.Topic])
 def read_topics():
     # stub topic list response
     topic_list_response = [
-        {
-            "id": uuid.uuid4(),
-            "name": name,
-            "created_at": datetime.now()
-        }
-        for name in topic_list
+        schemas.Topic(
+            id_=str(uuid.uuid4()),
+            name=name
+        )
+        for name in FAKE_TOPICS_LIST
     ]
     return topic_list_response
 
@@ -33,10 +33,10 @@ def publish_to_topics(
         message: str = Body(..., embed=True)
 ):
 
-    if topic_name not in topic_list:
+    if topic_name not in FAKE_TOPICS_LIST:
         raise HTTPException(status_code=404, detail=f"Topic not found")
 
-    fast_mqtt.publish(f"/{topic_name}", message, qos=qos)
+    fast_mqtt.publish(f"{topic_name}", message, qos=qos)
 
     # 200 Ok with empty body
     return {}
