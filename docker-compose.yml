@@ -1,0 +1,25 @@
+version: "2.9"
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    ports:
+      - "1883:1883"
+    volumes:
+      - type: bind
+        source: ./mosquitto.conf
+        target: /mosquitto/config/mosquitto.conf
+    restart: always
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    command: /start-reload.sh
+    depends_on:
+      mosquitto:
+        condition: service_started

@@ -8,7 +8,8 @@ from fastapi_mqtt.config import MQTTConfig
 
 class TestMQTTSettings(MQTTConfig):
 
-    host: str = "localhost"
+    # Service name in docker-compose
+    host: str = "mosquitto"
     port: int = 1883
     ssl: Union[bool, SSLContext] = False
     keepalive:  int = 60

@@ -1,23 +1,26 @@
 # mqtt-fastapi-wrapper
 
+A simple Fastapi wrapper for MQTT
+
+
+## Prerequisites
+
+`Docker` (`Docker Compose`) has to be installed and properly configured.
+
+
 ## Quick start
 
-Create `mosquitto.conf` with the following content:
+* Configure `Eclipse Mosquitto` message broker by editing `mosquitto.conf` file, e.g.:
 
-    ➜  /tmp cat mosquitto.conf 
-    persistence false
-    allow_anonymous true
-    connection_messages true
-    log_type all
-    listener 1883
+      # Plain MQTT protocol
+      persistence false
+      allow_anonymous true
+      connection_messages true
+      log_type all
+      listener 1883
 
+* Run `docker-compose`(use `-d` for detached mode):
 
-Run MQTT broker using Docker
+      $ docker-compose up [-d]
 
-    docker run --rm --name mosquitto -p 1883:1883 --rm -v `pwd`/mosquitto.conf:/mosquitto/config/mosquitto.conf eclipse-mosquitto
-
-Run `uvicorn`:
-
-    uvicorn main:app --port 8888 --reload --log-level debug
-
-See a list of available routes `http://localhost:8888/docs`
+For the list of available routes see `http://0.0.0.0:80/docs`
