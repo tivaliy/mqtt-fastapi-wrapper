@@ -13,6 +13,9 @@ router = APIRouter()
 
 @router.post("/", response_model=schemas.TopicSubscription)
 def subscribe_to_topic(subscription_in: schemas.TopicSubscriptionCreate):
+    """
+    Subscribes to a particular topic.
+    """
 
     if subscription_in.topic not in FAKE_TOPICS_LIST:
         raise HTTPException(status_code=404, detail=f"Topic not found")

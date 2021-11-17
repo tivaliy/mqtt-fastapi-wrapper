@@ -15,6 +15,9 @@ FAKE_TOPICS_LIST = ("/foo", "/bar")
 
 @router.get("/", response_model=List[schemas.Topic])
 def read_topics():
+    """
+    Get list of available topics.
+    """
     # stub topic list response
     topic_list_response = [
         schemas.Topic(
@@ -32,6 +35,9 @@ def publish_to_topics(
         qos: int = 0,
         message: str = Body(..., embed=True)
 ):
+    """
+    Publish to a particular ``topic_name``.
+    """
 
     if topic_name not in FAKE_TOPICS_LIST:
         raise HTTPException(status_code=404, detail=f"Topic not found")
