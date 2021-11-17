@@ -23,4 +23,8 @@ A simple Fastapi wrapper for MQTT
 
       $ docker-compose up [-d]
 
-For the list of available routes see `http://0.0.0.0:80/docs`
+For the list of available docs/routes and resources see:
+
+    http://0.0.0.0/docs
+    http://0.0.0.0/redoc
+    http://0.0.0.0/api/v1/openapi.json

@@ -18,13 +18,12 @@ class AppSettings(BaseAppSettings, MQTTConfig):
 
     debug: bool = False
     docs_url: str = "/docs"
-    openapi_prefix: str = ""
-    openapi_url: str = "/openapi.json"
     redoc_url: str = "/redoc"
+    api_v1_prefix: str = "/api/v1"
+    openapi_prefix: str = ""
+    openapi_url: str = f"{api_v1_prefix}/openapi.json"
     title: str = "FastAPI+MQTT example application"
     app_version: str = "0.0.1"
-
-    api_prefix: str = "/api"
 
     logging_level: int = logging.INFO
     loggers: Tuple[str, str] = ("uvicorn.asgi", "uvicorn.access")
