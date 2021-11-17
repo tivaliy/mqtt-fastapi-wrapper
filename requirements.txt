@@ -1,4 +1,5 @@
-uvicorn==0.15.0
 fastapi==0.70.0
 fastapi-mqtt==0.4.0
+loguru==0.5.3
 pydantic==1.8.2
+uvicorn==0.15.0

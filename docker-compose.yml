@@ -19,9 +19,8 @@ services:
       - "80:80"
     volumes:
       - .:/app
-    # TODO: Use .env file for different environments - prod, dev, test
-    environment:
-      - LOG_LEVEL=debug
+    env_file:
+      - .env
     command: /start-reload.sh
     depends_on:
       mosquitto:

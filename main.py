@@ -1,11 +1,27 @@
 from fastapi import FastAPI
 
 from app.api.api import api_router
+from app.core.config import get_app_settings
 from app.mqtt.client import fast_mqtt
 
 
-app = FastAPI(debug=True)
+def create_application() -> FastAPI:
+    """
+    Creates and initializes FastAPI application.
+    """
 
-fast_mqtt.init_app(app)
+    settings = get_app_settings()
 
-app.include_router(api_router)
+    settings.configure_logging()
+
+    application = FastAPI(**settings.fastapi_kwargs)
+
+    application.include_router(api_router, prefix=settings.api_prefix)
+
+    # Init mqtt client
+    fast_mqtt.init_app(application)
+
+    return application
+
+
+app = create_application()

@@ -1,15 +1,14 @@
-import logging
-
 from fastapi_mqtt.fastmqtt import FastMQTT
+from loguru import logger
 
-from .config import get_mqtt_config
+from app.core.config import get_app_settings
 
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+settings = get_app_settings()
 
+# Let's pass the whole settings attributes
 fast_mqtt = FastMQTT(
-    config=get_mqtt_config()
+    config=settings
 )
 
 

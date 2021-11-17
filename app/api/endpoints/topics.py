@@ -1,9 +1,9 @@
 import uuid
 from typing import List
 
-from app import schemas
 from fastapi import APIRouter, Body, HTTPException
 
+from app import schemas
 from app.mqtt.client import fast_mqtt
 
 
