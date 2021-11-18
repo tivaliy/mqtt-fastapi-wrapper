@@ -1,6 +1,6 @@
 import logging
 import sys
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, List, Tuple
 
 from loguru import logger
 from fastapi_mqtt.config import MQTTConfig
@@ -24,6 +24,8 @@ class AppSettings(BaseAppSettings, MQTTConfig):
     openapi_url: str = f"{api_v1_prefix}/openapi.json"
     title: str = "FastAPI+MQTT example application"
     app_version: str = "0.0.1"
+
+    allowed_hosts: List[str] = ["*"]
 
     logging_level: int = logging.INFO
     loggers: Tuple[str, str] = ("uvicorn.asgi", "uvicorn.access")
