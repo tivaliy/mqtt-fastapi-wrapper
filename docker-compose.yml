@@ -19,8 +19,6 @@ services:
       - "80:80"
     volumes:
       - .:/app
-    env_file:
-      - .env
     command: /start-reload.sh
     depends_on:
       mosquitto:
