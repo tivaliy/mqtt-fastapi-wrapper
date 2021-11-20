@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Prevents Python from buffering stdout and stderr
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY ./requirements /requirements
+RUN pip install --no-cache-dir --upgrade -r /requirements/development.txt
 
 COPY ./app /app

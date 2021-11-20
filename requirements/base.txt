@@ -1,0 +1,9 @@
+# FastAPI
+# ------------------------------------------------------------------------------
+fastapi==0.70.0  # https://github.com/tiangolo/fastapi
+fastapi-mqtt==0.4.0  # https://github.com/sabuhish/fastapi-mqtt
+
+pydantic==1.8.2  # https://github.com/samuelcolvin/pydantic
+uvicorn==0.15.0  # https://github.com/encode/uvicorn
+
+loguru==0.5.3  # https://github.com/Delgan/loguru

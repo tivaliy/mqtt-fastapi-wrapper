@@ -1,0 +1,7 @@
+-r ./base.txt
+
+ipdb==0.13.9  # https://github.com/gotcha/ipdb
+
+# Code quality
+# ------------------------------------------------------------------------------
+pre-commit==2.15.0  # https://github.com/pre-commit/pre-commit
