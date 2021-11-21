@@ -3,13 +3,10 @@ from loguru import logger
 
 from app.core.config import get_app_settings
 
-
 settings = get_app_settings()
 
 # Let's pass the whole settings attributes
-fast_mqtt = FastMQTT(
-    config=settings
-)
+fast_mqtt = FastMQTT(config=settings)
 
 
 @fast_mqtt.on_connect()

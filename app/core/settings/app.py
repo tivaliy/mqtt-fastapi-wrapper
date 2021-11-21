@@ -2,11 +2,11 @@ import logging
 import sys
 from typing import Any, Dict, List, Tuple
 
-from loguru import logger
 from fastapi_mqtt.config import MQTTConfig
+from loguru import logger
 
-from app.core.settings.base import BaseAppSettings
 from app.core.logging import InterceptHandler
+from app.core.settings.base import BaseAppSettings
 
 
 # TODO: Re-think in favor of using nested env for MQTTConfig, see link
