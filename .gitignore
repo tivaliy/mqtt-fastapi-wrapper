@@ -3,3 +3,6 @@ __pycache__
 
 # ignore env files
 .env
+
+# mypy
+.mypy_cache/
