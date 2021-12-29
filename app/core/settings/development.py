@@ -10,7 +10,7 @@ class DevAppSettings(AppSettings):
 
     debug: bool = True
 
-    logging_level = int = logging.DEBUG
+    logging_level: int = logging.DEBUG
 
     class Config(AppSettings.Config):
         env_file = ".env"
